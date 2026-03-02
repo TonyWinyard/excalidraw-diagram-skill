@@ -1,6 +1,11 @@
 ---
 name: excalidraw-diagram
-description: Create Excalidraw diagram JSON files that make visual arguments. Use when the user wants to visualize workflows, architectures, or concepts.
+description: >-
+  Create Excalidraw diagram JSON files that make visual arguments. Use when the
+  user wants to visualise workflows, architectures, concepts, curriculum maps,
+  or system diagrams. Also triggers on "excalidraw", "draw a diagram",
+  "visualise this", "create a visual", "diagram this", or when adding graphics
+  to Obsidian vault notes.
 ---
 
 # Excalidraw Diagram Creator
@@ -14,6 +19,27 @@ Generate `.excalidraw` JSON files that **argue visually**, not just display info
 **All colors and brand-specific styles live in one file:** `references/color-palette.md`. Read it before generating any diagram and use it as the single source of truth for all color choices — shape fills, strokes, text colors, evidence artifact backgrounds, everything.
 
 To make this skill produce diagrams in your own brand style, edit `color-palette.md`. Everything else in this file is universal design methodology and Excalidraw best practices.
+
+---
+
+## Obsidian Integration
+
+This skill is primarily used within the Obsidian vault. Follow these conventions:
+
+| Setting | Value |
+|---------|-------|
+| **Default output folder** | `~/Obsidian_Vaults/master_vault/Excalidraw/` |
+| **File extension** | `.excalidraw` |
+| **Naming convention** | Descriptive kebab-case (e.g., `solveway-curriculum-architecture.excalidraw`) |
+
+**After creating a diagram**, remind the user they can embed it in any vault note with:
+```markdown
+![[filename.excalidraw]]
+```
+
+Diagrams saved to the `Excalidraw/` folder are automatically available for linking from any note in the vault.
+
+**If the user specifies a different output location** (e.g., inside a project folder), use that instead. The `Excalidraw/` folder is the default, not a hard rule.
 
 ---
 
@@ -115,13 +141,13 @@ Evidence artifacts, code snippets, and concrete examples within each section. Th
 
 *Example*: Inside a "Backend" section, you might show the actual API response format, not just a box labeled "API Response"
 
-**For comprehensive diagrams, aim to include all three levels.** The summary gives context, the sections organize, and the details teach.
+**For comprehensive diagrams, aim to include all three levels.** The summary gives context, the sections organise, and the details teach.
 
 ### Bad vs Good
 
 | Bad (Displaying) | Good (Arguing) |
 |------------------|----------------|
-| 5 equal boxes with labels | Each concept has a shape that mirrors its behavior |
+| 5 equal boxes with labels | Each concept has a shape that mirrors its behaviour |
 | Card grid layout | Visual structure matches conceptual structure |
 | Icons decorating text | Shapes that ARE the meaning |
 | Same container for everything | Distinct visual vocabulary per concept |
@@ -154,7 +180,7 @@ Evidence artifacts, code snippets, and concrete examples within each section. Th
 | The shape itself carries meaning (decision diamond, etc.) | Typography alone creates sufficient hierarchy |
 | It represents a distinct "thing" in the system | It's a section title, subtitle, or annotation |
 
-**Typography as hierarchy**: Use font size, weight, and color to create visual hierarchy without boxes. A 28px title doesn't need a rectangle around it.
+**Typography as hierarchy**: Use font size, weight, and colour to create visual hierarchy without boxes. A 28px title doesn't need a rectangle around it.
 
 **The container test**: For each boxed element, ask "Would this work as free-floating text?" If yes, remove the container.
 
@@ -177,11 +203,11 @@ Read the content. For each concept, ask:
 - **What would someone need to SEE to understand this?** (not just read about)
 
 ### Step 2: Map Concepts to Patterns
-For each concept, find the visual pattern that mirrors its behavior:
+For each concept, find the visual pattern that mirrors its behaviour:
 
 | If the concept... | Use this pattern |
 |-------------------|------------------|
-| Spawns multiple outputs | **Fan-out** (radial arrows from center) |
+| Spawns multiple outputs | **Fan-out** (radial arrows from centre) |
 | Combines inputs into one | **Convergence** (funnel, arrows merging) |
 | Has hierarchy/nesting | **Tree** (lines + free-floating text) |
 | Is a sequence of steps | **Timeline** (line + dots + free-floating labels) |
@@ -346,17 +372,17 @@ Choose shape based on what it represents—or use no shape at all:
 
 ---
 
-## Color as Meaning
+## Colour as Meaning
 
-Colors encode information, not decoration. Every color choice should come from `references/color-palette.md` — the semantic shape colors, text hierarchy colors, and evidence artifact colors are all defined there.
+Colours encode information, not decoration. Every colour choice should come from `references/color-palette.md` — the semantic shape colours, text hierarchy colours, and evidence artifact colours are all defined there.
 
 **Key principles:**
 - Each semantic purpose (start, end, decision, AI, error, etc.) has a specific fill/stroke pair
-- Free-floating text uses color for hierarchy (titles, subtitles, details — each at a different level)
-- Evidence artifacts (code snippets, JSON examples) use their own dark background + colored text scheme
+- Free-floating text uses colour for hierarchy (titles, subtitles, details — each at a different level)
+- Evidence artifacts (code snippets, JSON examples) use their own dark background + coloured text scheme
 - Always pair a darker stroke with a lighter fill for contrast
 
-**Do not invent new colors.** If a concept doesn't fit an existing semantic category, use Primary/Neutral or Secondary.
+**Do not invent new colours.** If a concept doesn't fit an existing semantic category, use Primary/Neutral or Secondary.
 
 ---
 
@@ -376,7 +402,7 @@ For clean, professional diagrams:
 - `strokeWidth: 3` — Bold. Use sparingly for emphasis (main flow line, key connections).
 
 ### Opacity
-**Always use `opacity: 100` for all elements.** Use color, size, and stroke width to create hierarchy instead of transparency.
+**Always use `opacity: 100` for all elements.** Use colour, size, and stroke width to create hierarchy instead of transparency.
 
 ### Small Markers Instead of Shapes
 Instead of full shapes, use small dots (10-20px ellipses) as:
@@ -390,10 +416,10 @@ Instead of full shapes, use small dots (10-20px ellipses) as:
 ## Layout Principles
 
 ### Hierarchy Through Scale
-- **Hero**: 300×150 - visual anchor, most important
-- **Primary**: 180×90
-- **Secondary**: 120×60
-- **Small**: 60×40
+- **Hero**: 300x150 - visual anchor, most important
+- **Primary**: 180x90
+- **Secondary**: 120x60
+- **Small**: 60x40
 
 ### Whitespace = Importance
 The most important element has the most empty space around it (200px+).
@@ -440,7 +466,7 @@ Settings: `fontSize: 16`, `fontFamily: 3`, `textAlign: "center"`, `verticalAlign
 
 ## Element Templates
 
-See `references/element-templates.md` for copy-paste JSON templates for each element type (text, line, dot, rectangle, arrow). Pull colors from `references/color-palette.md` based on each element's semantic purpose.
+See `references/element-templates.md` for copy-paste JSON templates for each element type (text, line, dot, rectangle, arrow). Pull colours from `references/color-palette.md` based on each element's semantic purpose.
 
 ---
 
@@ -451,7 +477,7 @@ You cannot judge a diagram from JSON alone. After generating or editing the Exca
 ### How to Render
 
 ```bash
-cd .claude/skills/excalidraw-diagram/references && uv run python render_excalidraw.py <path-to-file.excalidraw>
+cd ~/.claude/skills/excalidraw-diagram/references && uv run python render_excalidraw.py <path-to-file.excalidraw>
 ```
 
 This outputs a PNG next to the `.excalidraw` file. Then use the **Read tool** on the PNG to actually view it.
@@ -503,7 +529,7 @@ The loop is done when:
 ### First-Time Setup
 If the render script hasn't been set up yet:
 ```bash
-cd .claude/skills/excalidraw-diagram/references
+cd ~/.claude/skills/excalidraw-diagram/references
 uv sync
 uv run playwright install chromium
 ```
@@ -516,11 +542,11 @@ uv run playwright install chromium
 1. **Research done**: Did you look up actual specs, formats, event names?
 2. **Evidence artifacts**: Are there code snippets, JSON examples, or real data?
 3. **Multi-zoom**: Does it have summary flow + section boundaries + detail?
-4. **Concrete over abstract**: Real content shown, not just labeled boxes?
+4. **Concrete over abstract**: Real content shown, not just labelled boxes?
 5. **Educational value**: Could someone learn something concrete from this?
 
 ### Conceptual
-6. **Isomorphism**: Does each visual structure mirror its concept's behavior?
+6. **Isomorphism**: Does each visual structure mirror its concept's behaviour?
 7. **Argument**: Does the diagram SHOW something text alone couldn't?
 8. **Variety**: Does each major concept use a different visual pattern?
 9. **No uniform containers**: Avoided card grids and equal boxes?
@@ -528,7 +554,7 @@ uv run playwright install chromium
 ### Container Discipline
 10. **Minimal containers**: Could any boxed element work as free-floating text instead?
 11. **Lines as structure**: Are tree/timeline patterns using lines + text rather than boxes?
-12. **Typography hierarchy**: Are font size and color creating visual hierarchy (reducing need for boxes)?
+12. **Typography hierarchy**: Are font size and colour creating visual hierarchy (reducing need for boxes)?
 
 ### Structural
 13. **Connections**: Every relationship has an arrow or line
